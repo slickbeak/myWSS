@@ -24,27 +24,29 @@ public class Sensor extends SubsystemBase
 
     // Sensors
     private final DigitalInput input10;
+    private final AnalogInput sharp22;
+    private final AnalogInput sharp23;
+    private int i; // for debugging
 
 
     // Good for debugging
     // Shuffleboard
     private final ShuffleboardTab tab = Shuffleboard.getTab("Sensors");
     private final NetworkTableEntry D_inputDisp = tab.add("inputDisp", 0).getEntry();
+    private final NetworkTableEntry D_cntDisp = tab.add("cntDisp", 0).getEntry();
+    private final NetworkTableEntry A_distance22Disp = tab.add("distance22Disp", 0).getEntry();
+    private final NetworkTableEntry A_distance23Disp = tab.add("distance23Disp", 0).getEntry();
 
     //Subsystem for sensors
     //This is just an example.
     public Sensor() {
         
         input10 = new DigitalInput(10);
+        sharp22 = new AnalogInput(0);
+        sharp23 = new AnalogInput(1);
 
     }
 
-    /**
-     * Sets the servo angle
-     * <p>
-     * 
-     * @param degrees degree to set the servo to, range 0° - 300°
-     */
     public Boolean getSwitch() {
         return input10.get();
     }
@@ -69,7 +71,11 @@ public class Sensor extends SubsystemBase
      * @return value between 0 - 100 (valid data range is 10cm - 80cm)
      */
     public double getIRDistance() {
-        return 0;
+        return (Math.pow(sharp22.getAverageVoltage(), -1.2045)) * 27.726;
+    }
+
+    public double getIRDistance2() {
+        return (Math.pow(sharp23.getAverageVoltage(), -1.2045)) * 27.726;
     }
    
     /**
@@ -81,7 +87,10 @@ public class Sensor extends SubsystemBase
         //Display on shuffleboard
         //These display is good for debugging but may slow system down.
         //Good to remove unnecessary display during competition
+        i++;
         D_inputDisp.setBoolean(getSwitch());
-
+        D_cntDisp.setNumber(i);
+        A_distance22Disp.setNumber(getIRDistance());
+        A_distance23Disp.setNumber(getIRDistance2());
     }
 }
