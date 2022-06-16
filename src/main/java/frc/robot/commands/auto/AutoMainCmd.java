@@ -1,6 +1,6 @@
 package frc.robot.commands.auto;
 
-import java.util.List;
+ import java.util.List;
 
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.controller.ProfiledPIDController;
@@ -16,6 +16,7 @@ import frc.robot.RobotContainer;
 // import the commands
 import frc.robot.commands.auto.MoveRobot;
 import frc.robot.commands.auto.RotateTest;
+import frc.robot.subsystems.OmniDrive;
 
 /**
  * DriveMotor class
@@ -24,15 +25,14 @@ import frc.robot.commands.auto.RotateTest;
  */
 public class AutoMainCmd extends SequentialCommandGroup
 {   
-
 	public AutoMainCmd()
     {
-        
         super(
-            new MoveRobot(2, -Math.PI/4, 0, 0, Math.PI),  
-            new MoveRobot(2, Math.PI/4, 0, 0, Math.PI),
-            new LoopCmd(new RotateTest()),
-            new MoveRobot(2, Math.PI/4, 0, 0, Math.PI)
+            // new MoveRobot(1, 1, 0, 0, 0.5),  
+            // new MoveRobot(2, Math.PI, 0, 0, Math.PI),
+            // new MoveRobot(1, 1, 0, 0, 0.5),
+            // new MoveRobot(2, Math.PI, 0, 0, Math.PI)
+            new MoveRobotSense(1 , 2 , 0 , 0, 0.5, ()->RobotContainer.m_sensor.getIRDistance()<21)
              );
     }
 }

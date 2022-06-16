@@ -26,15 +26,22 @@ public final class Constants
     public static final int SERVO_C         = 1;
 
     /**
+     * IOs Constants
+     */
+    public static final int DEBUG_PIN = 8;
+    public static final int INPUT0 = 9;
+    public static final int INPUT1 = 10;
+
+    /**
      * Sensors
      */
     public static final int SHARP           = 0;
     public static final int SONIC_TRIGG     = 8;
     public static final int SONIC_ECHO      = 9;
-
+    
     //Wheels
-    public static final double KWHEELDIAMETER = 0.1;  //wheel diameter
-    public static final double KENCODERCNTPR = 1440;  //Count per output shaft rev
+    public static final double KWHEELDIAMETER = 0.1;  //wheel diameter in metres
+    public static final double KENCODERCNTPR = 1464;  //Count per output shaft rev (6 (CPR) * 61 (Gear ratio) * 4 (Edges))
     public static final double KENCODERDISTPERPULSE = (KWHEELDIAMETER*Math.PI)/KENCODERCNTPR;
 
     //PIDs

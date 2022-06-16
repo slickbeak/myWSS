@@ -55,12 +55,22 @@ public class TeleCmd extends CommandBase
         double w = -m_oi.getLeftDriveX(); //X-positive is CW. Need to negate
 
         //Get other buttons?
+        // double speed_multiplier = 2;
+        // double s0, s1, s2;
+        // Open loop controls
+        // s0 = speed_multiplier * ((-0.5*x) + (-0.8665*y) + (0.5*w));
+        // s1 = speed_multiplier * ((x)+ (0) + (0.5*w));
+        // s2 = speed_multiplier * ((-0.5*x) + (0.8665*y) + (0.5*w));
+        // s0 = 2;
+        // s1 = 2;
+        // s2 = 2;
 
         //Add code here to control servo motor etc.
-        m_omnidrive.setMotorOut012(x,y,w);
+        // m_omnidrive.setMotorOut012(s0,s1,s2);
+        //m_omnidrive.setRobotSpeedXYW(s0, s1, s2);
         m_arm.setServoAngle((x*150)+150);
 
-        //m_omnidrive.setRobotSpeedXYW(x*0.6, y*0.6, w*Math.PI);
+        m_omnidrive.setRobotSpeedXYW(x*0.6, y*0.6, w*Math.PI);
 
     }
 

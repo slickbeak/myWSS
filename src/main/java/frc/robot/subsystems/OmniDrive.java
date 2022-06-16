@@ -72,7 +72,7 @@ public class OmniDrive extends SubsystemBase
     //Subsystem for omnidrive
     public OmniDrive() {
 
-        outDebug8 = new DigitalOutput(8);
+        outDebug8 = new DigitalOutput(Constants.DEBUG_PIN);
 
         //Omni drive motors
         motors = new TitanQuad[Constants.MOTOR_NUM];
@@ -266,7 +266,7 @@ public class OmniDrive extends SubsystemBase
         }
 
         for (int i=0; i<Constants.MOTOR_NUM; i++) {
-            //motors[i].set(motorOuts[i]/max);
+            motors[i].set(motorOuts[i]/max);
             ///////////////////////////////////////////////////////////
             //motors[i].set(0);   //off motor to test encoders manually
         }   

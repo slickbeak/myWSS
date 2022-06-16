@@ -23,7 +23,8 @@ public class Sensor extends SubsystemBase
     //For servo testing also????
 
     // Sensors
-    private final DigitalInput input10;
+    private final DigitalInput input0;
+    private final DigitalInput input1;
     private final AnalogInput sharp22;
     private final AnalogInput sharp23;
     private int i; // for debugging
@@ -32,7 +33,8 @@ public class Sensor extends SubsystemBase
     // Good for debugging
     // Shuffleboard
     private final ShuffleboardTab tab = Shuffleboard.getTab("Sensors");
-    private final NetworkTableEntry D_inputDisp = tab.add("inputDisp", 0).getEntry();
+    private final NetworkTableEntry D_inputDisp_00 = tab.add("inputDisp_0", false).getEntry();
+    private final NetworkTableEntry D_inputDisp_01 = tab.add("inputDisp_1", false).getEntry();
     private final NetworkTableEntry D_cntDisp = tab.add("cntDisp", 0).getEntry();
     private final NetworkTableEntry A_distance22Disp = tab.add("distance22Disp", 0).getEntry();
     private final NetworkTableEntry A_distance23Disp = tab.add("distance23Disp", 0).getEntry();
@@ -41,16 +43,20 @@ public class Sensor extends SubsystemBase
     //This is just an example.
     public Sensor() {
         
-        input10 = new DigitalInput(10);
+        input0 = new DigitalInput(Constants.INPUT0);
+        input1 = new DigitalInput(Constants.INPUT1);
         sharp22 = new AnalogInput(0);
         sharp23 = new AnalogInput(1);
 
     }
 
     public Boolean getSwitch() {
-        return input10.get();
+        return input0.get();
     }
 
+    public Boolean getSwitch1() {
+        return input1.get();
+    }
 
     /**
      * Call for the raw ADC value
@@ -88,7 +94,8 @@ public class Sensor extends SubsystemBase
         //These display is good for debugging but may slow system down.
         //Good to remove unnecessary display during competition
         i++;
-        D_inputDisp.setBoolean(getSwitch());
+        D_inputDisp_00.setBoolean(getSwitch());
+        D_inputDisp_01.setBoolean(getSwitch1());
         D_cntDisp.setNumber(i);
         A_distance22Disp.setNumber(getIRDistance());
         A_distance23Disp.setNumber(getIRDistance2());
