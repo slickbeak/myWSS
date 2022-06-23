@@ -68,7 +68,7 @@ public class TeleCmd extends CommandBase
         //Add code here to control servo motor etc.
         // m_omnidrive.setMotorOut012(s0,s1,s2);
         //m_omnidrive.setRobotSpeedXYW(s0, s1, s2);
-        m_arm.setServoAngle((x*150)+150);
+        m_arm.setServoAngle0((x*150)+150);
 
         m_omnidrive.setRobotSpeedXYW(x*0.6, y*0.6, w*Math.PI);
 

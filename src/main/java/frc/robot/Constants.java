@@ -24,6 +24,8 @@ public final class Constants
     public static final int MOTOR_NUM       = 3;
     public static final int SERVO           = 0;
     public static final int SERVO_C         = 1;
+    public static final int SERVO0          = 8;
+    public static final int SERVO1          = 9;
 
     /**
      * IOs Constants
@@ -31,6 +33,7 @@ public final class Constants
     public static final int DEBUG_PIN = 8;
     public static final int INPUT0 = 9;
     public static final int INPUT1 = 10;
+    public static final int INPUT2 = 11;
 
     /**
      * Sensors

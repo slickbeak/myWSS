@@ -26,10 +26,5 @@ public class RotateTest extends SequentialCommandGroup
         
     }
        
-    @Override
-    public void end(boolean interrupted)
-    {
-        super.end(interrupted);
-        LoopCmd.cmdEndFlag = true;
-    }
+
 }

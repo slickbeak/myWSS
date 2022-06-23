@@ -18,7 +18,7 @@ public class OmniDriveOdometry {
   public void resetPosition(Pose2d pose) {
     m_pose = pose;
   }
-    /**
+  /**
    * Returns the position of the robot on the field.
    *
    * @return The pose of the robot (x and y are in meters).
